@@ -20,10 +20,11 @@ width: ${props => props.width ? props.width : null};
 
 
 function Item(props) {
-  const { itemData: { id, name, quantity, quantityMetric, desc, price } } = props;
-  
+  const { itemData: { id, name, quantity, quantityMetric, desc, price }, changeQty=false } = props;
+  console.log("Change Qty flag: ",changeQty);
+
   return (
-    
+    !changeQty ? (
     <ItemStyle className="container row g-2">
 
       <ItemBox className="col-lg-4 col-md-6 col-sm-12">
@@ -42,7 +43,12 @@ function Item(props) {
         <ItemInfoContainer>{price}</ItemInfoContainer>
       </ItemBox>
 
-    </ItemStyle>
+    </ItemStyle>) :
+
+    (
+      null
+    )
+  
   );
 }
 
